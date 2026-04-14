@@ -1,0 +1,33 @@
+{
+  "name": "woocommerce-ai-skills",
+  "version": "1.0.0",
+  "description": "AI agent skills to operate your WooCommerce store via the REST API. 56 workflows across merchandising, orders, customers, coupons, finance, and support.",
+  "author": {
+    "name": "navarroido"
+  },
+  "homepage": "https://github.com/navarroido/Woocommerce-skill",
+  "repository": "https://github.com/navarroido/Woocommerce-skill",
+  "license": "MIT",
+  "keywords": [
+    "woocommerce",
+    "wordpress",
+    "ecommerce",
+    "rest-api",
+    "orders",
+    "products",
+    "customers",
+    "refunds",
+    "agents",
+    "store-management"
+  ],
+  "skills": [
+    "./skills/merchandising",
+    "./skills/order-management",
+    "./skills/customer-ops",
+    "./skills/customer-support",
+    "./skills/marketing",
+    "./skills/finance",
+    "./skills/store-management",
+    "./skills/analytics"
+  ]
+}

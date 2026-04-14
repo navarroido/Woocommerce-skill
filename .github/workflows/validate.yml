@@ -1,0 +1,49 @@
+name: Validate Skills
+
+on:
+  push:
+    paths:
+      - 'skills/**'
+      - 'scripts/validate-skill.mjs'
+      - 'scripts/validate-api-index.mjs'
+  pull_request:
+    paths:
+      - 'skills/**'
+      - 'scripts/validate-skill.mjs'
+      - 'scripts/validate-api-index.mjs'
+
+jobs:
+  validate:
+    name: Validate skill files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate skill frontmatter and sections
+        run: node scripts/validate-skill.mjs
+
+      - name: Validate REST API index coverage
+        run: node scripts/validate-api-index.mjs
+
+      - name: Build catalog (verify it generates without error)
+        run: node scripts/build-catalog.mjs
+
+      - name: Check skill count
+        run: |
+          COUNT=$(find skills -name "SKILL.md" | wc -l)
+          echo "Found $COUNT skill files"
+          if [ "$COUNT" -lt 1 ]; then
+            echo "ERROR: No skill files found"
+            exit 1
+          fi

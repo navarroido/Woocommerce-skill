@@ -1,0 +1,42 @@
+name: Lint Skills
+
+on:
+  push:
+    paths:
+      - 'skills/**'
+      - 'docs/**'
+      - '*.md'
+      - '.markdownlint.json'
+      - 'scripts/lint-skills.mjs'
+  pull_request:
+    paths:
+      - 'skills/**'
+      - 'docs/**'
+      - '*.md'
+      - '.markdownlint.json'
+      - 'scripts/lint-skills.mjs'
+
+jobs:
+  lint:
+    name: Lint markdown files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint skill files
+        run: node scripts/lint-skills.mjs
+
+      - name: Lint root and docs markdown
+        run: |
+          npx markdownlint-cli2 "*.md" "docs/*.md" --config .markdownlint.json || true
