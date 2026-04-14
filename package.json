@@ -2,7 +2,6 @@
   "name": "woocommerce-ai-skills",
   "version": "1.0.0",
   "description": "Community-maintained AI agent skills for operating WooCommerce stores — products, orders, customers, coupons, finance, and more",
-  "private": true,
   "license": "MIT",
   "author": "navarroido & Community Contributors",
   "repository": {
@@ -33,13 +32,36 @@
     "node": ">=18.0.0"
   },
   "packageManager": "pnpm@9.15.0",
+  "type": "module",
+  "bin": {
+    "woo-skills-install": "./bin/install.mjs"
+  },
+  "files": [
+    "bin/",
+    "skills/",
+    "docs/",
+    "scripts/",
+    "templates/",
+    ".claude-plugin/",
+    "skills.json",
+    "CATALOG.md",
+    "CLAUDE.md",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "validate": "node scripts/validate-skill.mjs",
     "lint": "markdownlint-cli2 \"skills/**/*.md\" \"docs/**/*.md\"",
+    "lint:skills": "node scripts/lint-skills.mjs",
     "build:catalog": "node scripts/build-catalog.mjs",
+    "build:manifest": "node scripts/build-manifest.mjs",
+    "build": "node scripts/build-catalog.mjs && node scripts/build-manifest.mjs",
     "scaffold": "bash scripts/scaffold.sh",
     "validate:index": "node scripts/validate-api-index.mjs",
-    "test": "node scripts/validate-skill.mjs && markdownlint-cli2 \"skills/**/*.md\""
+    "install:all": "node bin/install.mjs --platform all",
+    "install:claude": "node bin/install.mjs --platform claude",
+    "install:cursor": "node bin/install.mjs --platform cursor",
+    "test": "node scripts/validate-skill.mjs && node scripts/validate-api-index.mjs"
   },
   "devDependencies": {
     "glob": "^11.1.0",

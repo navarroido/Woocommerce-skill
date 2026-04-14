@@ -1,0 +1,810 @@
+{
+  "schema_version": "1.0",
+  "name": "woocommerce-ai-skills",
+  "repository": "navarroido/Woocommerce-skill",
+  "install_command": "npx skills add navarroido/Woocommerce-skill",
+  "api": "WooCommerce REST API v3",
+  "base_url_pattern": "/wp-json/wc/v3/",
+  "total": 56,
+  "generated_at": "2026-04-14T19:43:32.566Z",
+  "skills": [
+    {
+      "name": "woo-conversion-funnel-report",
+      "role": "analytics",
+      "description": "Read-only: Compute pending/on-hold/completed order ratios to surface checkout conversion insights.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders",
+        "GET /reports/orders/totals"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/analytics/woo-conversion-funnel-report/SKILL.md"
+    },
+    {
+      "name": "woo-customer-acquisition-trend",
+      "role": "analytics",
+      "description": "Read-only: Track new customer registrations by month and compute first-order conversion rate.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /customers",
+        "GET /orders"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/analytics/woo-customer-acquisition-trend/SKILL.md"
+    },
+    {
+      "name": "woo-product-cross-sell-analysis",
+      "role": "analytics",
+      "description": "Read-only: Identify products most frequently purchased together in the same order.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders",
+        "GET /products"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/analytics/woo-product-cross-sell-analysis/SKILL.md"
+    },
+    {
+      "name": "woo-repeat-purchase-rate",
+      "role": "analytics",
+      "description": "Read-only: Compute the percentage of customers who placed more than one order within a specified window.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders",
+        "GET /customers"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/analytics/woo-repeat-purchase-rate/SKILL.md"
+    },
+    {
+      "name": "woo-top-product-performance",
+      "role": "analytics",
+      "description": "Read-only: Rank products by units sold, net revenue, and refund rate over a configurable period and export a performance report.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /reports/top_sellers",
+        "GET /orders",
+        "GET /products",
+        "GET /products/categories"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/analytics/woo-top-product-performance/SKILL.md"
+    },
+    {
+      "name": "woo-b2b-customer-overview",
+      "role": "customer-ops",
+      "description": "Read-only: Export customers with a B2B role or meta_data flag including order count, lifetime spend, and last order date.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /customers"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/customer-ops/woo-b2b-customer-overview/SKILL.md"
+    },
+    {
+      "name": "woo-customer-cohort-analysis",
+      "role": "customer-ops",
+      "description": "Read-only: Group customers by registration month and compute cohort purchase rates, order counts, and lifetime value.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /customers",
+        "GET /orders"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/customer-ops/woo-customer-cohort-analysis/SKILL.md"
+    },
+    {
+      "name": "woo-customer-note-bulk-annotator",
+      "role": "customer-ops",
+      "description": "Append a note to multiple customers matching a role, spend range, or country filter with dry-run preview.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /customers",
+        "PUT /customers/{id}"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": true,
+      "path": "skills/customer-ops/woo-customer-note-bulk-annotator/SKILL.md"
+    },
+    {
+      "name": "woo-customer-spend-tier-tagger",
+      "role": "customer-ops",
+      "description": "Segment customers into Bronze, Silver, and Gold tiers based on lifetime total_spent and write the tier as a customer meta field.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /customers",
+        "PUT /customers/{id}"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": true,
+      "path": "skills/customer-ops/woo-customer-spend-tier-tagger/SKILL.md"
+    },
+    {
+      "name": "woo-duplicate-customer-finder",
+      "role": "customer-ops",
+      "description": "Read-only: Identify customer records sharing billing_email or shipping address to flag for merge or deduplication.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /customers"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/customer-ops/woo-duplicate-customer-finder/SKILL.md"
+    },
+    {
+      "name": "woo-marketing-consent-report",
+      "role": "customer-ops",
+      "description": "Read-only: Export customers with marketing opt-in status from user meta for email list compliance and GDPR auditing.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /customers"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/customer-ops/woo-marketing-consent-report/SKILL.md"
+    },
+    {
+      "name": "woo-address-correction",
+      "role": "customer-support",
+      "description": "Update billing or shipping address fields on a WooCommerce order with a private audit note.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders/{id}",
+        "PUT /orders/{id}"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": true,
+      "path": "skills/customer-support/woo-address-correction/SKILL.md"
+    },
+    {
+      "name": "woo-order-lookup-and-summary",
+      "role": "customer-support",
+      "description": "Read-only: Retrieve a WooCommerce order by ID or customer email and produce a human-readable support summary.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders/{id}",
+        "GET /orders"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/customer-support/woo-order-lookup-and-summary/SKILL.md"
+    },
+    {
+      "name": "woo-refund-and-reorder",
+      "role": "customer-support",
+      "description": "Process a full or partial refund on a WooCommerce order and optionally create a replacement order for the customer.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders/{id}",
+        "POST /orders/{id}/refunds",
+        "GET /orders"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": true,
+      "path": "skills/customer-support/woo-refund-and-reorder/SKILL.md"
+    },
+    {
+      "name": "woo-return-initiation",
+      "role": "customer-support",
+      "description": "Update order status to returned/refunded and log a timestamped note with return reason.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders/{id}",
+        "PUT /orders/{id}"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": true,
+      "path": "skills/customer-support/woo-return-initiation/SKILL.md"
+    },
+    {
+      "name": "woo-wismo-bulk-status-report",
+      "role": "customer-support",
+      "description": "Read-only: Find all unfulfilled orders older than N days and export a WISMO (Where Is My Order) CSV for proactive customer communication.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/customer-support/woo-wismo-bulk-status-report/SKILL.md"
+    },
+    {
+      "name": "woo-average-order-value-trends",
+      "role": "finance",
+      "description": "Read-only: Track average order value over rolling windows and flag statistically significant changes.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders",
+        "GET /reports/sales"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/finance/woo-average-order-value-trends/SKILL.md"
+    },
+    {
+      "name": "woo-coupon-discount-impact",
+      "role": "finance",
+      "description": "Read-only: Quantify total discount value applied per coupon code over a specified period.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders",
+        "GET /coupons"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/finance/woo-coupon-discount-impact/SKILL.md"
+    },
+    {
+      "name": "woo-refund-rate-analysis",
+      "role": "finance",
+      "description": "Read-only: Compute refund rate by product, category, or period from order and refund data.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders",
+        "GET /orders/{id}/refunds"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/finance/woo-refund-rate-analysis/SKILL.md"
+    },
+    {
+      "name": "woo-revenue-by-period",
+      "role": "finance",
+      "description": "Read-only: Aggregate gross revenue, refunds, and net revenue by day, week, or month using WooCommerce reports.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /reports/sales",
+        "GET /orders"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/finance/woo-revenue-by-period/SKILL.md"
+    },
+    {
+      "name": "woo-revenue-by-product-category",
+      "role": "finance",
+      "description": "Read-only: Break down net revenue contribution by WooCommerce product category for a specified period.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders",
+        "GET /products",
+        "GET /products/categories"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/finance/woo-revenue-by-product-category/SKILL.md"
+    },
+    {
+      "name": "woo-shipping-cost-analysis",
+      "role": "finance",
+      "description": "Read-only: Compare shipping_total collected from customers against configured shipping zone rates to identify pricing gaps.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders",
+        "GET /shipping/zones",
+        "GET /shipping/zones/{id}/methods"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/finance/woo-shipping-cost-analysis/SKILL.md"
+    },
+    {
+      "name": "woo-tax-liability-summary",
+      "role": "finance",
+      "description": "Read-only: Sum tax_lines by tax class and rate across completed orders for a specified period and export a tax liability report.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders",
+        "GET /taxes/classes"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/finance/woo-tax-liability-summary/SKILL.md"
+    },
+    {
+      "name": "woo-abandoned-cart-recovery",
+      "role": "marketing",
+      "description": "Read-only: Query WooCommerce pending orders older than a configurable threshold and export a re-engagement list for abandoned cart recovery campaigns.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/marketing/woo-abandoned-cart-recovery/SKILL.md"
+    },
+    {
+      "name": "woo-coupon-bulk-generator",
+      "role": "marketing",
+      "description": "Create N unique coupon codes with configurable discount type, amount, and expiry date with dry-run preview.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "POST /coupons"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": true,
+      "path": "skills/marketing/woo-coupon-bulk-generator/SKILL.md"
+    },
+    {
+      "name": "woo-coupon-hygiene-cleanup",
+      "role": "marketing",
+      "description": "Find expired, zero-use, or past-expiry coupons and batch-delete after confirmation.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /coupons",
+        "DELETE /coupons/{id}"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": true,
+      "path": "skills/marketing/woo-coupon-hygiene-cleanup/SKILL.md"
+    },
+    {
+      "name": "woo-customer-win-back",
+      "role": "marketing",
+      "description": "Read-only: Identify customers who haven't ordered in N days and export with last-order context for win-back campaigns.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /customers",
+        "GET /orders"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/marketing/woo-customer-win-back/SKILL.md"
+    },
+    {
+      "name": "woo-loyalty-segment-export",
+      "role": "marketing",
+      "description": "Read-only: Export customers meeting spend or order-count thresholds for loyalty program enrollment.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /customers"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/marketing/woo-loyalty-segment-export/SKILL.md"
+    },
+    {
+      "name": "woo-bulk-price-adjustment",
+      "role": "merchandising",
+      "description": "Adjust prices across products or a category by fixed amount or percentage with min/max guards and dry-run preview before any changes are applied.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /products",
+        "GET /products/{id}",
+        "PUT /products/{id}",
+        "POST /products/batch",
+        "GET /products/{id}/variations",
+        "POST /products/{id}/variations/batch",
+        "GET /products/categories"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": true,
+      "path": "skills/merchandising/woo-bulk-price-adjustment/SKILL.md"
+    },
+    {
+      "name": "woo-category-reorganization",
+      "role": "merchandising",
+      "description": "Reassign products between categories in bulk based on tag or meta_data filter rules with dry-run preview.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /products",
+        "PUT /products/{id}",
+        "GET /products/categories"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": true,
+      "path": "skills/merchandising/woo-category-reorganization/SKILL.md"
+    },
+    {
+      "name": "woo-dead-stock-identifier",
+      "role": "merchandising",
+      "description": "Read-only: Find products with zero sales in the last N days but positive stock — candidates for markdown, clearance, or removal.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /products",
+        "GET /orders",
+        "GET /reports/top_sellers"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/merchandising/woo-dead-stock-identifier/SKILL.md"
+    },
+    {
+      "name": "woo-duplicate-sku-detector",
+      "role": "merchandising",
+      "description": "Read-only: Detect duplicate SKUs across simple and variable products and export a conflict report.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /products",
+        "GET /products/{id}/variations"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/merchandising/woo-duplicate-sku-detector/SKILL.md"
+    },
+    {
+      "name": "woo-inventory-adjustment",
+      "role": "merchandising",
+      "description": "Set or increment stock quantities for one or many SKUs via the REST API with dry-run preview before any stock changes are applied.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /products",
+        "PUT /products/{id}",
+        "GET /products/{id}/variations",
+        "PUT /products/{id}/variations/{variation_id}"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": true,
+      "path": "skills/merchandising/woo-inventory-adjustment/SKILL.md"
+    },
+    {
+      "name": "woo-inventory-valuation-report",
+      "role": "merchandising",
+      "description": "Read-only: Calculate total inventory value (stock_quantity × price) by category and export as a financial summary.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /products",
+        "GET /products/categories",
+        "GET /products/{id}/variations"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/merchandising/woo-inventory-valuation-report/SKILL.md"
+    },
+    {
+      "name": "woo-low-stock-restock-alert",
+      "role": "merchandising",
+      "description": "Read-only: Query products below a configurable stock threshold and export a prioritized reorder sheet grouped by category.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /products",
+        "GET /products/categories"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/merchandising/woo-low-stock-restock-alert/SKILL.md"
+    },
+    {
+      "name": "woo-meta-field-bulk-update",
+      "role": "merchandising",
+      "description": "Add or update a WooCommerce meta_data field across a filtered product set with dry-run preview.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /products",
+        "PUT /products/{id}"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": true,
+      "path": "skills/merchandising/woo-meta-field-bulk-update/SKILL.md"
+    },
+    {
+      "name": "woo-product-data-completeness-score",
+      "role": "merchandising",
+      "description": "Read-only: Score each product against a required fields checklist (images, description, weight, SKU, attributes) and export a completeness gap report.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /products",
+        "GET /products/{id}"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/merchandising/woo-product-data-completeness-score/SKILL.md"
+    },
+    {
+      "name": "woo-product-image-audit",
+      "role": "merchandising",
+      "description": "Read-only: Identify products with no images, fewer images than threshold, or images missing alt text.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /products"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/merchandising/woo-product-image-audit/SKILL.md"
+    },
+    {
+      "name": "woo-product-lifecycle-manager",
+      "role": "merchandising",
+      "description": "Move products between draft, pending, private, and publish statuses in bulk based on age or sales thresholds with dry-run preview.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /products",
+        "PUT /products/{id}",
+        "GET /orders"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": true,
+      "path": "skills/merchandising/woo-product-lifecycle-manager/SKILL.md"
+    },
+    {
+      "name": "woo-product-tag-bulk-update",
+      "role": "merchandising",
+      "description": "Add or remove tags from a filtered set of products (by category, price range, or stock status) with dry-run preview.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /products",
+        "PUT /products/{id}",
+        "GET /products/tags"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": true,
+      "path": "skills/merchandising/woo-product-tag-bulk-update/SKILL.md"
+    },
+    {
+      "name": "woo-seo-metadata-audit",
+      "role": "merchandising",
+      "description": "Read-only: Scan products and categories for missing or short SEO titles and meta descriptions and export a prioritized gap report.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /products",
+        "GET /products/categories"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/merchandising/woo-seo-metadata-audit/SKILL.md"
+    },
+    {
+      "name": "woo-stock-velocity-report",
+      "role": "merchandising",
+      "description": "Read-only: Compute units-sold-per-day per SKU over a rolling window and flag fast-movers and slow-movers.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders",
+        "GET /products",
+        "GET /reports/top_sellers"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/merchandising/woo-stock-velocity-report/SKILL.md"
+    },
+    {
+      "name": "woo-variant-attribute-normalizer",
+      "role": "merchandising",
+      "description": "Read-only: Find product variations where attribute values are inconsistently cased or spelled, and export a normalization report.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /products",
+        "GET /products/{id}/variations",
+        "GET /products/attributes"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/merchandising/woo-variant-attribute-normalizer/SKILL.md"
+    },
+    {
+      "name": "woo-bulk-order-notes",
+      "role": "order-management",
+      "description": "Append a private or customer-visible note to multiple orders matching a status, date, or payment method filter.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders",
+        "POST /orders/{id}/notes"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": true,
+      "path": "skills/order-management/woo-bulk-order-notes/SKILL.md"
+    },
+    {
+      "name": "woo-cancel-and-restock",
+      "role": "order-management",
+      "description": "Cancel one or many WooCommerce orders and restore stock quantities for all line items with dry-run preview.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders",
+        "GET /orders/{id}",
+        "PUT /orders/{id}"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": true,
+      "path": "skills/order-management/woo-cancel-and-restock/SKILL.md"
+    },
+    {
+      "name": "woo-fulfillment-status-digest",
+      "role": "order-management",
+      "description": "Read-only: Aggregate order counts by status and flag orders overdue for processing based on a configurable SLA age threshold.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders",
+        "GET /reports/orders/totals"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/order-management/woo-fulfillment-status-digest/SKILL.md"
+    },
+    {
+      "name": "woo-high-value-order-tagger",
+      "role": "order-management",
+      "description": "Tag orders above a configurable total threshold with a custom meta field for priority handling with dry-run preview.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders",
+        "PUT /orders/{id}"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": true,
+      "path": "skills/order-management/woo-high-value-order-tagger/SKILL.md"
+    },
+    {
+      "name": "woo-order-hold-and-release",
+      "role": "order-management",
+      "description": "Set orders to on-hold status with a timestamped note and bulk-release them back to processing when ready.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders",
+        "PUT /orders/{id}",
+        "POST /orders/batch"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": true,
+      "path": "skills/order-management/woo-order-hold-and-release/SKILL.md"
+    },
+    {
+      "name": "woo-order-status-bulk-update",
+      "role": "order-management",
+      "description": "Move a filtered set of orders (by date, current status, or payment method) to a new status with dry-run preview.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders",
+        "PUT /orders/{id}",
+        "POST /orders/batch"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": true,
+      "path": "skills/order-management/woo-order-status-bulk-update/SKILL.md"
+    },
+    {
+      "name": "woo-split-shipment-planner",
+      "role": "order-management",
+      "description": "Read-only: Identify orders with mixed in-stock and backordered items to plan split shipments.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders",
+        "GET /products",
+        "GET /products/{id}/variations"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/order-management/woo-split-shipment-planner/SKILL.md"
+    },
+    {
+      "name": "woo-tracking-number-update",
+      "role": "order-management",
+      "description": "Set or update tracking number and shipping provider meta on WooCommerce fulfilled orders with dry-run preview.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /orders/{id}",
+        "PUT /orders/{id}"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": true,
+      "path": "skills/order-management/woo-tracking-number-update/SKILL.md"
+    },
+    {
+      "name": "woo-payment-gateway-status",
+      "role": "store-management",
+      "description": "Read-only: Query all enabled payment gateways and their configuration status.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /payment_gateways"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/store-management/woo-payment-gateway-status/SKILL.md"
+    },
+    {
+      "name": "woo-settings-export",
+      "role": "store-management",
+      "description": "Read-only: Export all WooCommerce general, tax, shipping, and checkout settings as a structured report.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /settings",
+        "GET /settings/{group_id}",
+        "GET /settings/{group_id}/{setting_id}"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/store-management/woo-settings-export/SKILL.md"
+    },
+    {
+      "name": "woo-shipping-zone-audit",
+      "role": "store-management",
+      "description": "Read-only: List all shipping zones with their methods and rates, flag zones with no active methods configured, and identify gaps in geographic coverage.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /shipping/zones",
+        "GET /shipping/zones/{id}/methods"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/store-management/woo-shipping-zone-audit/SKILL.md"
+    },
+    {
+      "name": "woo-tax-rate-audit",
+      "role": "store-management",
+      "description": "Read-only: List tax rates by class and country, identify gaps and duplicates.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /taxes",
+        "GET /taxes/classes"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/store-management/woo-tax-rate-audit/SKILL.md"
+    },
+    {
+      "name": "woo-webhook-health-check",
+      "role": "store-management",
+      "description": "Read-only: List all webhooks with delivery URL, status, and failure count.",
+      "api_version": "wc/v3",
+      "rest_endpoints": [
+        "GET /webhooks"
+      ],
+      "status": "stable",
+      "compatibility": "Claude Code, Cursor, Cline, Codex, Gemini CLI",
+      "mutating": false,
+      "path": "skills/store-management/woo-webhook-health-check/SKILL.md"
+    }
+  ]
+}

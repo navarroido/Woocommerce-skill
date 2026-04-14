@@ -1,0 +1,225 @@
+---
+import Layout from '../layouts/Layout.astro';
+import manifest from '../../../skills.json';
+
+const base = import.meta.env.BASE_URL;
+
+const byRole = {};
+for (const skill of manifest.skills) {
+  if (!byRole[skill.role]) byRole[skill.role] = [];
+  byRole[skill.role].push(skill);
+}
+
+const roleOrder = [
+  'merchandising',
+  'order-management',
+  'customer-ops',
+  'customer-support',
+  'marketing',
+  'finance',
+  'store-management',
+  'analytics',
+];
+
+const roleDescriptions = {
+  merchandising: 'Products, pricing, inventory, SEO, images, and catalog quality.',
+  'order-management': 'Order status updates, fulfillment, tracking, and cancellations.',
+  'customer-ops': 'Customer segmentation, LTV tiers, B2B overview, and deduplication.',
+  'customer-support': 'Refunds, returns, WISMO reports, and address corrections.',
+  marketing: 'Coupon generation, abandoned cart recovery, win-back campaigns, loyalty exports.',
+  finance: 'Revenue reports, tax liability, refund rate, AOV trends, and shipping cost analysis.',
+  'store-management': 'Shipping zones, tax rates, payment gateways, webhooks, and settings.',
+  analytics: 'Top products, repeat purchase rate, funnel analysis, and cross-sell insights.',
+};
+
+const roleEmoji = {
+  merchandising: '🏷️',
+  'order-management': '📦',
+  'customer-ops': '👥',
+  'customer-support': '💬',
+  marketing: '📣',
+  finance: '💰',
+  'store-management': '⚙️',
+  analytics: '📊',
+};
+---
+
+<Layout title="Home">
+  <style>
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem 3rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      color: #7f54b3;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #6b7280;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+    .install-block {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .install-card {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 0.75rem 1.25rem;
+      text-align: left;
+    }
+    .install-card .label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+    .install-card code {
+      font-size: 0.9rem;
+      color: #1a1a2e;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin: 2rem 0 3rem;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat .num { font-size: 2rem; font-weight: 700; color: #7f54b3; }
+    .stat .lbl { font-size: 0.875rem; color: #6b7280; }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+    .category-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 1.25rem;
+      transition: box-shadow 0.15s;
+    }
+    .category-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .category-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .category-card .count {
+      font-size: 0.8rem;
+      background: #ede9f6;
+      color: #7f54b3;
+      border-radius: 20px;
+      padding: 0.1em 0.6em;
+      margin-left: auto;
+    }
+    .category-card p {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 0.75rem;
+    }
+    .category-card ul {
+      list-style: none;
+      font-size: 0.82rem;
+      color: #374151;
+    }
+    .category-card ul li {
+      padding: 0.15rem 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .category-card ul li:last-child { border-bottom: none; }
+    .mutating-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      background: #fef3c7;
+      color: #92400e;
+      border-radius: 4px;
+      padding: 0.05em 0.4em;
+      margin-left: 0.3rem;
+      vertical-align: middle;
+    }
+    .view-all {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.82rem;
+      color: #7f54b3;
+      font-weight: 500;
+    }
+    section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+
+  <div class="hero">
+    <h1>WooCommerce AI Skills</h1>
+    <p>56 AI agent skills for operating WooCommerce stores via the REST API — works with Claude, Cursor, Cline, Copilot, Gemini CLI.</p>
+
+    <div class="install-block">
+      <div class="install-card">
+        <div class="label">Claude Code</div>
+        <code>/plugin install navarroido/Woocommerce-skill</code>
+      </div>
+      <div class="install-card">
+        <div class="label">Cursor · Cline · Copilot · Gemini</div>
+        <code>npx skills add navarroido/Woocommerce-skill</code>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="num">{manifest.total}</div><div class="lbl">Skills</div></div>
+    <div class="stat"><div class="num">{roleOrder.length}</div><div class="lbl">Categories</div></div>
+    <div class="stat"><div class="num">{manifest.skills.filter(s => !s.mutating).length}</div><div class="lbl">Read-only</div></div>
+    <div class="stat"><div class="num">{manifest.skills.filter(s => s.mutating).length}</div><div class="lbl">Mutating (dry-run first)</div></div>
+  </div>
+
+  <section>
+    <h2>Skill Categories</h2>
+    <div class="categories">
+      {roleOrder.map(role => {
+        const skills = byRole[role] || [];
+        return (
+          <div class="category-card">
+            <h3>
+              <span>{roleEmoji[role]}</span>
+              {role}
+              <span class="count">{skills.length}</span>
+            </h3>
+            <p>{roleDescriptions[role]}</p>
+            <ul>
+              {skills.slice(0, 5).map(s => (
+                <li>
+                  {s.name}
+                  {s.mutating && <span class="mutating-badge">writes</span>}
+                </li>
+              ))}
+              {skills.length > 5 && <li style="color:#9ca3af">+ {skills.length - 5} more…</li>}
+            </ul>
+            <a class="view-all" href={`${base}/catalog#${role}`}>View all {role} skills →</a>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+</Layout>

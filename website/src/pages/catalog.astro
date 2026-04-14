@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+import manifest from '../../../skills.json';
+
+const base = import.meta.env.BASE_URL;
+
+const byRole = {};
+for (const skill of manifest.skills) {
+  if (!byRole[skill.role]) byRole[skill.role] = [];
+  byRole[skill.role].push(skill);
+}
+
+const roleOrder = [
+  'merchandising',
+  'order-management',
+  'customer-ops',
+  'customer-support',
+  'marketing',
+  'finance',
+  'store-management',
+  'analytics',
+];
+---
+
+<Layout title="Skill Catalog" description="Full catalog of all 56 WooCommerce AI Skills.">
+  <style>
+    h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; color: #7f54b3; }
+    .subtitle { color: #6b7280; margin-bottom: 2rem; }
+
+    .toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .toc a {
+      background: #ede9f6;
+      color: #5b3e8f;
+      border-radius: 20px;
+      padding: 0.3em 0.9em;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .toc a:hover { background: #7f54b3; color: white; text-decoration: none; }
+
+    .category { margin-bottom: 3rem; }
+    .category h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      border-bottom: 2px solid #ede9f6;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th {
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      background: #f9fafb;
+      border-bottom: 2px solid #e5e7eb;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #6b7280;
+    }
+    td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
+    tr:hover td { background: #fafafa; }
+
+    .skill-name { font-weight: 600; color: #1a1a2e; font-family: 'SF Mono', monospace; font-size: 0.82rem; }
+    .desc { color: #374151; }
+    .endpoints { font-size: 0.78rem; color: #6b7280; font-family: monospace; }
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      border-radius: 4px;
+      padding: 0.1em 0.5em;
+      font-weight: 500;
+    }
+    .badge-read { background: #d1fae5; color: #065f46; }
+    .badge-write { background: #fef3c7; color: #92400e; }
+  </style>
+
+  <h1>Skill Catalog</h1>
+  <p class="subtitle">All {manifest.total} WooCommerce AI Skills — {manifest.skills.filter(s => !s.mutating).length} read-only, {manifest.skills.filter(s => s.mutating).length} mutating (always dry-run first).</p>
+
+  <div class="toc">
+    {roleOrder.map(role => (
+      <a href={`#${role}`}>{role} ({(byRole[role] || []).length})</a>
+    ))}
+  </div>
+
+  {roleOrder.map(role => {
+    const skills = byRole[role] || [];
+    return (
+      <section class="category" id={role}>
+        <h2>{role} <small style="font-weight:400;color:#6b7280;font-size:0.85rem">({skills.length} skills)</small></h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Skill</th>
+              <th>Description</th>
+              <th>Endpoints</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            {skills.map(skill => (
+              <tr>
+                <td><span class="skill-name">{skill.name}</span></td>
+                <td><span class="desc">{skill.description.replace(/^Read-only:\s*/i, '')}</span></td>
+                <td>
+                  <span class="endpoints">
+                    {skill.rest_endpoints.map(e => <span style="display:block">{e}</span>)}
+                  </span>
+                </td>
+                <td>
+                  {skill.mutating
+                    ? <span class="badge badge-write">writes</span>
+                    : <span class="badge badge-read">read-only</span>
+                  }
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    );
+  })}
+</Layout>

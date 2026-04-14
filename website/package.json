@@ -1,0 +1,19 @@
+{
+  "name": "woocommerce-ai-skills-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Documentation website for WooCommerce AI Skills",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "generate": "node scripts/generate-data.mjs"
+  },
+  "dependencies": {
+    "astro": "^4.0.0"
+  },
+  "devDependencies": {
+    "glob": "^11.0.0",
+    "gray-matter": "^4.0.3"
+  }
+}

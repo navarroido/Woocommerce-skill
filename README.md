@@ -131,10 +131,12 @@ pnpm scaffold
 
 - [x] Architecture and skill format defined
 - [x] 8 anchor skills (one per category)
-- [ ] Full 56-skill catalog
-- [ ] Automated catalog generation
-- [ ] CI validation pipeline
-- [ ] NPX distribution setup
+- [x] Full 56-skill catalog (all categories complete)
+- [x] Automated catalog generation (`pnpm build:catalog`)
+- [x] skills.json manifest for NPX distribution (`pnpm build:manifest`)
+- [x] CI validation pipeline (GitHub Actions: validate + lint on every PR)
+- [x] NPX installer (`bin/install.mjs` — supports Claude, Cursor, Cline, Copilot, Gemini)
+- [x] Documentation website (Astro static site in `website/`, deploys to GitHub Pages)
 
 See [PLAN.md](./PLAN.md) for the full roadmap.
 
