@@ -40,7 +40,6 @@
     "bin/",
     "skills/",
     "docs/",
-    "scripts/",
     "templates/",
     ".claude-plugin/",
     "skills.json",
@@ -49,6 +48,14 @@
     "README.md",
     "LICENSE"
   ],
+  "dependencies": {
+    "glob": "^11.1.0"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3",
+    "markdownlint": "^0.37.4",
+    "markdownlint-cli2": "^0.17.2"
+  },
   "scripts": {
     "validate": "node scripts/validate-skill.mjs",
     "lint": "markdownlint-cli2 \"skills/**/*.md\" \"docs/**/*.md\"",
@@ -62,11 +69,5 @@
     "install:claude": "node bin/install.mjs --platform claude",
     "install:cursor": "node bin/install.mjs --platform cursor",
     "test": "node scripts/validate-skill.mjs && node scripts/validate-api-index.mjs"
-  },
-  "devDependencies": {
-    "glob": "^11.1.0",
-    "gray-matter": "^4.0.3",
-    "markdownlint": "^0.37.4",
-    "markdownlint-cli2": "^0.17.2"
   }
 }
