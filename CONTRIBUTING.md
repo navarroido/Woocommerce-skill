@@ -1,6 +1,6 @@
 # Contributing to WooCommerce AI Skills
 
-Thank you for contributing! This project follows the same contribution model as the 40RTY Shopify Admin Skills.
+Thank you for contributing! 
 
 ## Quick Start
 
