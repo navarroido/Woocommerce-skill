@@ -2,7 +2,7 @@
 
 ## Vision
 
-Create a WooCommerce equivalent of the 40RTY Shopify Admin Skills system: a community-maintained collection of markdown-based AI agent skill files that enables any LLM to operate a WooCommerce store via the REST API. Users install with one command and immediately gain AI-powered store management across products, orders, customers, marketing, finance, and more.
+Create a community-maintained collection of markdown-based AI agent skill files that enables any LLM to operate a WooCommerce store via the REST API. Users install with one command and immediately gain AI-powered store management across products, orders, customers, marketing, finance, and more.
 
 **Target: 56 skills across 8 categories, working on any LLM platform.**
 
@@ -200,12 +200,12 @@ One skill per category to establish the pattern:
 
 | Decision | Choice | Rationale |
 |----------|--------|-----------|
-| Skill format | Markdown + YAML frontmatter | Platform-agnostic, git-friendly, same as Shopify pattern |
+| Skill format | Markdown + YAML frontmatter | Platform-agnostic, git-friendly, human-readable |
 | API | WooCommerce REST v3 | Only official API; no GraphQL in WooCommerce core |
 | Auth | Consumer Key + Secret via env vars | Most compatible; works over HTTPS with Basic Auth |
 | Pagination | per_page=100 + page loop | WooCommerce max is 100; use X-WP-TotalPages header |
 | Dry-run | dry_run: true parameter on all mutating skills | Safety-first; prevents accidental data changes |
-| Distribution | npx skills add (same CLI as Shopify skills) | Zero new tooling; works with existing agent platforms |
+| Distribution | npx skills add navarroido/Woocommerce-skill | Zero new tooling; works with any agent platform |
 
 ---
 
@@ -217,4 +217,4 @@ One skill per category to establish the pattern:
 | 2025-04-14 | How to handle WooCommerce plugin extensions (Subscriptions, Bookings)? | Core WC skills only in v1; extensions in separate skill packs |
 | 2025-04-14 | Should we support WooCommerce.com hosted stores differently? | No difference — same REST API applies |
 | Open | OAuth 1.0a signature helper for HTTP-only dev sites? | TBD — document in AUTHENTICATION.md for now |
-| Open | Skills website (equivalent to skills.40rty.ai)? | Phase 4 — Astro static site from CATALOG.md data |
+| Open | Skills website for browsing the catalog? | Phase 4 — Astro static site from CATALOG.md data |

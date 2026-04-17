@@ -116,18 +116,20 @@ pnpm build:catalog  (regenerates CATALOG.md)
 
 ---
 
-## Comparison to Shopify Admin Skills
+## Design Principles vs. Other AI Skill Systems
 
-| Aspect | Shopify Admin Skills | WooCommerce AI Skills |
-|--------|---------------------|----------------------|
-| API type | GraphQL (Admin API) | REST (`/wp-json/wc/v3/`) |
-| Endpoint registry | `graphql-operations-index.md` | `docs/rest-api-index.md` |
-| Auth mechanism | `shopify auth login` CLI | Consumer Key + Secret (env vars) |
-| Pagination | GraphQL cursor | `per_page=100` + `page` loop |
+WooCommerce AI Skills follows the same structural pattern adopted by other AI skill collections for e-commerce platforms, adapted for WooCommerce's REST API and WordPress hosting model.
+
+| Aspect | Generic AI Skills Pattern | WooCommerce AI Skills |
+|--------|--------------------------|----------------------|
+| API type | Varies (GraphQL or REST) | REST (`/wp-json/wc/v3/`) |
+| Endpoint registry | Operations index file | `docs/rest-api-index.md` |
+| Auth mechanism | Platform CLI or token | Consumer Key + Secret (env vars) |
+| Pagination | Cursor-based or offset | `per_page=100` + `page` loop |
 | Dry-run | `dry_run: true` parameter | Same |
 | Session tracking | Mandatory ASCII banners | Same |
-| Distribution | `npx skills add 40RTY-ai/shopify-admin-skills` | `npx skills add navarroido/Woocommerce-skill` |
+| Distribution | `npx skills add <repo>` | `npx skills add navarroido/Woocommerce-skill` |
 | Claude Code | Plugin manifest | Same structure |
-| Skill count | 63 skills / 10 categories | 56 skills / 8 categories |
+| Skill count | Varies | 56 skills / 8 categories |
 
-The two systems share identical frontmatter field naming (except `graphql_operations` → `rest_endpoints`), identical Section Tracking section content, and identical distribution mechanics. This means contributors familiar with the Shopify system can author WooCommerce skills immediately.
+The frontmatter field naming, Session Tracking section content, and distribution mechanics are consistent with the broader `npx skills add` ecosystem, making it straightforward for contributors to author WooCommerce skills.

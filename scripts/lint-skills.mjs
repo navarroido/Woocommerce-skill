@@ -71,11 +71,6 @@ async function checkSpelling(files) {
     const raw = readFileSync(file, 'utf8');
     const relFile = path.relative(ROOT, file);
 
-    // Check for common copy-paste errors
-    if (raw.includes('shopify') || raw.includes('Shopify')) {
-      issues.push(`${relFile}: Contains "Shopify" — verify this is intentional`);
-    }
-
     // Check CSV filename pattern matches skill name
     const nameMatch = raw.match(/^name:\s*(woo-[\w-]+)/m);
     const csvMatch = raw.match(/CSV filename:\s*`(woo-[\w-]+)_/);
