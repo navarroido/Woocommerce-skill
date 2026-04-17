@@ -17,7 +17,7 @@ Each skill is a single markdown file with YAML frontmatter that describes:
 - Dry-run preview before any mutations
 - Authentication requirements
 
-Modelled on the [40RTY Shopify Admin Skills](https://github.com/40RTY-ai/shopify-admin-skills) pattern, adapted for WooCommerce's REST API and WordPress hosting model.
+adapted for WooCommerce's REST API and WordPress hosting model.
 
 ---
 
