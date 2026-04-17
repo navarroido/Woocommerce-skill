@@ -9,18 +9,15 @@ import { readFileSync } from 'fs';
 import { glob } from 'glob';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { createRequire } from 'module';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 
-// Use markdownlint if available, otherwise skip gracefully
-const require = createRequire(import.meta.url);
-
 async function runMarkdownlint(files) {
-  let markdownlint;
+  let lint;
   try {
-    markdownlint = require('markdownlint');
+    const mod = await import('markdownlint/async');
+    lint = mod.lint;
   } catch {
     console.warn('markdownlint not installed — skipping lint. Run: pnpm install');
     return 0;
@@ -31,45 +28,39 @@ async function runMarkdownlint(files) {
   try {
     config = JSON.parse(readFileSync(configPath, 'utf8'));
   } catch {
-    // Use defaults if config file not found
+    // use defaults
   }
 
-  const options = {
-    files,
-    config,
-  };
-
-  return new Promise((resolve) => {
-    markdownlint(options, (err, result) => {
-      if (err) {
-        console.error('markdownlint error:', err);
-        resolve(1);
-        return;
-      }
-
-      let errorCount = 0;
-      for (const [file, issues] of Object.entries(result)) {
-        if (issues.length === 0) continue;
-        const relFile = path.relative(ROOT, file);
-        console.error(`\n❌ ${relFile}`);
-        for (const issue of issues) {
-          console.error(`   Line ${issue.lineNumber}: [${issue.ruleNames.join('/')}] ${issue.ruleDescription}`);
-          if (issue.errorDetail) {
-            console.error(`     Detail: ${issue.errorDetail}`);
-          }
-          errorCount++;
-        }
-      }
-
-      if (errorCount === 0) {
-        console.log(`All ${files.length} skill files passed markdownlint.`);
-      } else {
-        console.error(`\n${errorCount} lint issue(s) found.`);
-      }
-
-      resolve(errorCount > 0 ? 1 : 0);
+  const result = await new Promise((resolve, reject) => {
+    lint({ files, config }, (err, r) => {
+      if (err) reject(err);
+      else resolve(r ?? {});
     });
-  });
+  }).catch((err) => { console.error('markdownlint error:', err); return null; });
+
+  if (result === null) return 1;
+
+  let errorCount = 0;
+  for (const [file, issues] of Object.entries(result)) {
+    if (issues.length === 0) continue;
+    const relFile = path.relative(ROOT, file);
+    console.error(`\n❌ ${relFile}`);
+    for (const issue of issues) {
+      console.error(`   Line ${issue.lineNumber}: [${issue.ruleNames.join('/')}] ${issue.ruleDescription}`);
+      if (issue.errorDetail) {
+        console.error(`     Detail: ${issue.errorDetail}`);
+      }
+      errorCount++;
+    }
+  }
+
+  if (errorCount === 0) {
+    console.log(`All ${files.length} skill files passed markdownlint.`);
+  } else {
+    console.error(`\n${errorCount} lint issue(s) found.`);
+  }
+
+  return errorCount > 0 ? 1 : 0;
 }
 
 async function checkSpelling(files) {

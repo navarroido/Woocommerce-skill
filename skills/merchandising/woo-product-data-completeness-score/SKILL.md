@@ -126,7 +126,7 @@ STARTUP:
 
 ```
 ╔══════════════════════════════════════════╗
-║  SKILL: woo-product-data-completeness    ║
+║  SKILL: woo-product-data-completeness-score║
 ║  STORE: <store_url>                      ║
 ║  TIME:  <ISO-8601 UTC>                   ║
 ║  MODE:  READ-ONLY                        ║
