@@ -6,7 +6,7 @@
   "api": "WooCommerce REST API v3",
   "base_url_pattern": "/wp-json/wc/v3/",
   "total": 56,
-  "generated_at": "2026-04-14T19:43:32.566Z",
+  "generated_at": "2026-04-19T11:50:00.763Z",
   "skills": [
     {
       "name": "woo-conversion-funnel-report",

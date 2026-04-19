@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://navarroido.github.io',
-  base: '/Woocommerce-skill',
+  site: 'https://agenticwoo.dev',
+  base: '/',
   output: 'static',
   build: {
     assets: 'assets',

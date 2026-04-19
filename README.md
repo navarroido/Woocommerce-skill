@@ -4,6 +4,8 @@
 
 **56 skills · 8 roles · Works with any LLM**
 
+**Website:** [agenticwoo.dev](https://agenticwoo.dev) · **npm:** [woocommerce-ai-skills](https://www.npmjs.com/package/woocommerce-ai-skills)
+
 ---
 
 ## What Is This?
@@ -16,8 +18,6 @@ Each skill is a single markdown file with YAML frontmatter that describes:
 - Step-by-step instructions for the agent
 - Dry-run preview before any mutations
 - Authentication requirements
-
-adapted for WooCommerce's REST API and WordPress hosting model.
 
 ---
 
@@ -32,6 +32,8 @@ adapted for WooCommerce's REST API and WordPress hosting model.
 ```bash
 npx skills add navarroido/Woocommerce-skill
 ```
+
+Full documentation at **[agenticwoo.dev](https://agenticwoo.dev)**
 
 ---
 
@@ -130,13 +132,12 @@ pnpm scaffold
 ## Project Status
 
 - [x] Architecture and skill format defined
-- [x] 8 anchor skills (one per category)
 - [x] Full 56-skill catalog (all categories complete)
 - [x] Automated catalog generation (`pnpm build:catalog`)
 - [x] skills.json manifest for NPX distribution (`pnpm build:manifest`)
 - [x] CI validation pipeline (GitHub Actions: validate + lint on every PR)
 - [x] NPX installer (`bin/install.mjs` — supports Claude, Cursor, Cline, Copilot, Gemini)
-- [x] Documentation website (Astro static site in `website/`, deploys to GitHub Pages)
+- [x] Documentation website at [agenticwoo.dev](https://agenticwoo.dev)
 
 See [PLAN.md](./PLAN.md) for the full roadmap.
 
