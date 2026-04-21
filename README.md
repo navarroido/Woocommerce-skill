@@ -8,8 +8,9 @@
 [![License](https://img.shields.io/github/license/navarroido/Woocommerce-skill)](./LICENSE)
 [![Validate](https://img.shields.io/github/actions/workflow/status/navarroido/Woocommerce-skill/validate.yml?label=validate)](https://github.com/navarroido/Woocommerce-skill/actions/workflows/validate.yml)
 [![Website](https://img.shields.io/badge/website-agenticwoo.dev-blue)](https://agenticwoo.dev)
+[![skills.sh](https://img.shields.io/badge/skills.sh-listed-brightgreen)](https://agentskill.sh/navarroido/Woocommerce-skill)
 
-**Website:** [agenticwoo.dev](https://agenticwoo.dev) · **npm:** [woocommerce-ai-skills](https://www.npmjs.com/package/woocommerce-ai-skills)
+**Website:** [agenticwoo.dev](https://agenticwoo.dev) · **npm:** [woocommerce-ai-skills](https://www.npmjs.com/package/woocommerce-ai-skills) · **skills.sh:** [navarroido/Woocommerce-skill](https://agentskill.sh/navarroido/Woocommerce-skill)
 
 ---
 
@@ -33,7 +34,12 @@ Each skill is a single markdown file with YAML frontmatter that describes:
 /plugin install navarroido/Woocommerce-skill
 ```
 
-### For all other agents (Cursor, Cline, Copilot, Gemini CLI, Codex)
+### For GitHub Copilot (via gh CLI)
+```bash
+gh skill install navarroido/Woocommerce-skill
+```
+
+### For all other agents (Cursor, Cline, Gemini CLI, Codex)
 ```bash
 npx skills add navarroido/Woocommerce-skill
 ```
@@ -114,12 +120,12 @@ See [docs/AUTHENTICATION.md](./docs/AUTHENTICATION.md) for full setup instructio
 
 | Platform | Install Method | Context File |
 |----------|---------------|--------------|
-| Claude Code | `/plugin install` | Plugin manifest |
-| Cursor | `npx skills add` | `.cursor/rules/*.mdc` |
-| Cline | `npx skills add` | `.clinerules` |
-| GitHub Copilot | `npx skills add` | `.github/copilot-instructions.md` |
-| Gemini CLI | `npx skills add` | `GEMINI.md` |
-| Codex | `npx skills add` | Context injection |
+| Claude Code | `/plugin install navarroido/Woocommerce-skill` | Plugin manifest |
+| GitHub Copilot | `gh skill install navarroido/Woocommerce-skill` | Copilot context |
+| Cursor | `npx skills add navarroido/Woocommerce-skill` | `.cursor/rules/*.mdc` |
+| Cline | `npx skills add navarroido/Woocommerce-skill` | `.clinerules` |
+| Gemini CLI | `npx skills add navarroido/Woocommerce-skill` | `GEMINI.md` |
+| Codex | `npx skills add navarroido/Woocommerce-skill` | Context injection |
 
 ---
 
@@ -143,6 +149,9 @@ pnpm scaffold
 - [x] CI validation pipeline (GitHub Actions: validate + lint on every PR)
 - [x] NPX installer (`bin/install.mjs` — supports Claude, Cursor, Cline, Copilot, Gemini)
 - [x] Documentation website at [agenticwoo.dev](https://agenticwoo.dev)
+- [x] Published to npm as [woocommerce-ai-skills](https://www.npmjs.com/package/woocommerce-ai-skills)
+- [x] Published to GitHub Copilot skills system (`gh skill install navarroido/Woocommerce-skill`)
+- [x] Listed on [skills.sh](https://agentskill.sh/navarroido/Woocommerce-skill)
 
 See [PLAN.md](./PLAN.md) for the full roadmap.
 
