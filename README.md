@@ -2,7 +2,12 @@
 
 > Community-maintained AI agent skills for operating WooCommerce stores — products, orders, customers, coupons, finance, and more.
 
-**56 skills · 8 roles · Works with any LLM**
+[![npm version](https://img.shields.io/npm/v/woocommerce-ai-skills?color=7f54b3&label=npm)](https://www.npmjs.com/package/woocommerce-ai-skills)
+[![npm downloads](https://img.shields.io/npm/dm/woocommerce-ai-skills?color=7f54b3)](https://www.npmjs.com/package/woocommerce-ai-skills)
+[![Skills](https://img.shields.io/badge/skills-56-7f54b3)](https://agenticwoo.dev/catalog)
+[![License](https://img.shields.io/github/license/navarroido/Woocommerce-skill)](./LICENSE)
+[![Validate](https://img.shields.io/github/actions/workflow/status/navarroido/Woocommerce-skill/validate.yml?label=validate)](https://github.com/navarroido/Woocommerce-skill/actions/workflows/validate.yml)
+[![Website](https://img.shields.io/badge/website-agenticwoo.dev-blue)](https://agenticwoo.dev)
 
 **Website:** [agenticwoo.dev](https://agenticwoo.dev) · **npm:** [woocommerce-ai-skills](https://www.npmjs.com/package/woocommerce-ai-skills)
 
