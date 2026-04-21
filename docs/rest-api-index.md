@@ -15,11 +15,15 @@ Validated automatically by `scripts/validate-api-index.mjs`.
 | /wp-json/wc/v3/products/{id} | PUT | Read/Write | woo-bulk-price-adjustment, woo-inventory-adjustment, woo-product-tag-bulk-update, woo-category-reorganization, woo-product-lifecycle-manager, woo-meta-field-bulk-update |
 | /wp-json/wc/v3/products/batch | POST | Read/Write | woo-bulk-price-adjustment |
 | /wp-json/wc/v3/products/{id}/variations | GET | Read | woo-bulk-price-adjustment, woo-variant-attribute-normalizer |
+| /wp-json/wc/v3/products/{id}/variations/{variation_id} | PUT | Read/Write | woo-inventory-adjustment |
 | /wp-json/wc/v3/products/{id}/variations/batch | POST | Read/Write | woo-bulk-price-adjustment |
 | /wp-json/wc/v3/products/categories | GET | Read | woo-inventory-valuation-report, woo-category-reorganization, woo-top-product-performance |
+| /wp-json/wc/v3/products/tags | GET | Read | woo-product-tag-bulk-update |
+| /wp-json/wc/v3/products/attributes | GET | Read | woo-variant-attribute-normalizer |
 | /wp-json/wc/v3/orders | GET | Read | woo-fulfillment-status-digest, woo-order-status-bulk-update, woo-bulk-order-notes, woo-cancel-and-restock, woo-tracking-number-update, woo-split-shipment-planner, woo-order-hold-and-release, woo-high-value-order-tagger, woo-refund-and-reorder, woo-order-lookup-and-summary, woo-return-initiation, woo-wismo-bulk-status-report, woo-address-correction, woo-abandoned-cart-recovery, woo-tax-liability-summary, woo-refund-rate-analysis, woo-average-order-value-trends, woo-shipping-cost-analysis, woo-revenue-by-product-category, woo-coupon-discount-impact, woo-top-product-performance, woo-repeat-purchase-rate, woo-conversion-funnel-report, woo-product-cross-sell-analysis |
 | /wp-json/wc/v3/orders/{id} | GET | Read | woo-order-lookup-and-summary, woo-refund-and-reorder |
 | /wp-json/wc/v3/orders/{id} | PUT | Read/Write | woo-order-status-bulk-update, woo-bulk-order-notes, woo-cancel-and-restock, woo-tracking-number-update, woo-order-hold-and-release, woo-high-value-order-tagger, woo-return-initiation, woo-address-correction |
+| /wp-json/wc/v3/orders/{id}/notes | POST | Read/Write | woo-bulk-order-notes |
 | /wp-json/wc/v3/orders/{id}/refunds | POST | Read/Write | woo-refund-and-reorder |
 | /wp-json/wc/v3/orders/{id}/refunds | GET | Read | woo-refund-rate-analysis |
 | /wp-json/wc/v3/orders/batch | POST | Read/Write | woo-order-status-bulk-update, woo-order-hold-and-release |
@@ -38,8 +42,8 @@ Validated automatically by `scripts/validate-api-index.mjs`.
 | /wp-json/wc/v3/payment_gateways | GET | Read | woo-payment-gateway-status |
 | /wp-json/wc/v3/webhooks | GET | Read | woo-webhook-health-check |
 | /wp-json/wc/v3/settings | GET | Read | woo-settings-export |
-| /wp-json/wc/v3/settings/{group} | GET | Read | woo-settings-export |
-| /wp-json/wc/v3/system_status | GET | Read | authentication verification |
+| /wp-json/wc/v3/settings/{group_id} | GET | Read | woo-settings-export |
+| /wp-json/wc/v3/settings/{group_id}/{setting_id} | GET | Read | woo-settings-export |
 
 ---
 
@@ -82,5 +86,5 @@ Validated automatically by `scripts/validate-api-index.mjs`.
 - `/wp-json/wc/v3/payment_gateways` — payment gateway list
 - `/wp-json/wc/v3/webhooks` — webhook CRUD
 - `/wp-json/wc/v3/settings` — general settings groups
-- `/wp-json/wc/v3/settings/{group}` — settings per group
-- `/wp-json/wc/v3/system_status` — environment info (for auth test)
+- `/wp-json/wc/v3/settings/{group_id}` — settings per group
+- `/wp-json/wc/v3/settings/{group_id}/{setting_id}` — individual setting value
